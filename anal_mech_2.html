@@ -1,0 +1,150 @@
+<div class="box">
+<h2>付録A：次元チェック表（参照用）</h2>
+
+<p>
+この表は、解析力学で頻出する量について
+<strong>定義・次元・SI単位</strong>を一望できるようにまとめたものである。
+計算前・計算後の整合性確認に用いる。
+</p>
+
+<table border="1" cellspacing="0" cellpadding="6" style="border-collapse:collapse;font-size:10.5pt;">
+<thead>
+<tr>
+<th>量</th>
+<th>記号</th>
+<th>定義 / 意味</th>
+<th>次元</th>
+<th>SI単位</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>時間</td>
+<td><i>t</i></td>
+<td>独立変数</td>
+<td>[T]</td>
+<td>s</td>
+</tr>
+
+<tr>
+<td>一般化座標</td>
+<td><i>q</i></td>
+<td>配置空間の座標</td>
+<td>系に依存</td>
+<td>m, rad など</td>
+</tr>
+
+<tr>
+<td>一般化速度</td>
+<td><i>q̇</i></td>
+<td>dq/dt</td>
+<td>[q]/[T]</td>
+<td>m/s, rad/s</td>
+</tr>
+
+<tr>
+<td>質量</td>
+<td><i>m</i></td>
+<td>慣性の尺度</td>
+<td>[M]</td>
+<td>kg</td>
+</tr>
+
+<tr>
+<td>運動エネルギー</td>
+<td><i>T</i></td>
+<td>速度に依存</td>
+<td>[M L² T⁻²]</td>
+<td>J</td>
+</tr>
+
+<tr>
+<td>位置エネルギー</td>
+<td><i>V</i></td>
+<td>位置に依存</td>
+<td>[M L² T⁻²]</td>
+<td>J</td>
+</tr>
+
+<tr>
+<td>ラグランジアン</td>
+<td><i>L</i></td>
+<td>L = T − V</td>
+<td>[M L² T⁻²]</td>
+<td>J</td>
+</tr>
+
+<tr>
+<td>作用</td>
+<td><i>S</i></td>
+<td>∫ L dt</td>
+<td>[M L² T⁻¹]</td>
+<td>J·s</td>
+</tr>
+
+<tr>
+<td>共役運動量</td>
+<td><i>p</i></td>
+<td>∂L/∂q̇</td>
+<td>[M L T⁻¹]</td>
+<td>kg·m/s</td>
+</tr>
+
+<tr>
+<td>力</td>
+<td><i>F</i></td>
+<td>−∂V/∂q</td>
+<td>[M L T⁻²]</td>
+<td>N</td>
+</tr>
+
+<tr>
+<td>エネルギー</td>
+<td><i>E</i></td>
+<td>q̇p − L</td>
+<td>[M L² T⁻²]</td>
+<td>J</td>
+</tr>
+
+<tr>
+<td>ハミルトニアン</td>
+<td><i>H</i></td>
+<td>時間発展の生成子</td>
+<td>[M L² T⁻²]</td>
+<td>J</td>
+</tr>
+
+<tr>
+<td>散逸関数</td>
+<td><i>R</i></td>
+<td>速度比例摩擦</td>
+<td>[M L² T⁻³]</td>
+<td>J/s</td>
+</tr>
+
+<tr>
+<td>未定乗数</td>
+<td><i>λ</i></td>
+<td>拘束力に対応</td>
+<td>拘束に依存</td>
+<td>例：N</td>
+</tr>
+
+<tr>
+<td>プランク定数</td>
+<td><i>ħ</i></td>
+<td>量子作用量</td>
+<td>[M L² T⁻¹]</td>
+<td>J·s</td>
+</tr>
+</tbody>
+</table>
+
+<p class="small">
+使い方：
+(1) 式の各項の次元が一致するか確認する  
+(2) 新しい項（摩擦・補正項）を入れてよいか判断する  
+(3) 有効理論か基礎理論かを見極める
+</p>
+</div>
