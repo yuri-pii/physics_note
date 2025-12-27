@@ -30,6 +30,23 @@ h3{font-size:12.5pt;border-bottom:1px solid #000;margin-top:1em;}
 .small{font-size:10.5pt;}
 ul{margin-left:1.2em;}
 </style>
+<!-- MathJax v3: TeX 数式をレンダリング -->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['\\(', '\\)'], ['$', '$']],
+      displayMath: [['\\[', '\\]'], ['$$', '$$']],
+      processEscapes: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  
+
+
 </head>
 
 <body>
