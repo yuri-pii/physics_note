@@ -55,20 +55,6 @@ document.addEventListener("DOMContentLoaded", function () {
 <h1>解析力学：最小セット（数学公式／物理原理）まとめノート</h1>
 
 <div class="box">
-<p>
-とても良い段階に来ています。<br>
-ここでは 「解析力学で本当に使うものだけ」 を、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;• ✅ 数学公式（道具）<br>
-&nbsp;&nbsp;&nbsp;&nbsp;• ✅ 物理の公理・原理（意味）<br>
-に分けて、<br>
-一覧＋覚え方メモ＋物理量の説明 付きで整理します。<br><br>
-目的は<br>
-暗記ではなく「思い出せる最小セット」を作ること<br>
-です。
-</p>
-</div>
-
-<div class="box">
 <h2>Ⅰ. 解析力学で使う数学公式（最小セット）</h2>
 
 <h3>1. 多変数関数の一次テイラー展開</h3>
@@ -103,7 +89,7 @@ f(x,y)
 <div class="eq">
 \[
 \delta S
-=
+\equiv
 \left.\frac{d}{d\varepsilon}S[q+\varepsilon\eta]\right|_{\varepsilon=0}
 \]
 </div>
@@ -225,7 +211,7 @@ S[q]=\int_{t_1}^{t_2} L(q,\dot q,t)\,dt
 <h3>2. ラグランジアンの定義</h3>
 <div class="eq">
 \[
-L = T - V
+L \equiv T - V
 \]
 </div>
 <p>
@@ -270,7 +256,7 @@ E–L は原理ではない<br>
 <h3>4. 共役運動量の定義</h3>
 <div class="eq">
 \[
-p_i := \frac{\partial L}{\partial \dot q_i}
+p_i \equiv \frac{\partial L}{\partial \dot q_i}
 \]
 </div>
 <p>
@@ -353,7 +339,7 @@ p_i := \frac{\partial L}{\partial \dot q_i}
 <h3>7. エネルギー保存</h3>
 <div class="eq">
 \[
-E=\sum_i \dot q_i p_i - L,
+E \equiv \sum_i \dot q_i p_i - L,
 \qquad
 \frac{\partial L}{\partial t}=0
 \Rightarrow
@@ -438,25 +424,6 @@ V_{\mathrm{eff}}(r)=V(r)+\frac{l^2}{2mr^2}
 \]
 </div>
 
-</div>
-
-<div class="box">
-<h2>最後に（あなた向けの一言）</h2>
-<p>
-あなたの理解段階では、<br>
-&nbsp;&nbsp;&nbsp;&nbsp;• 公式を増やす<br>
-よりも<br>
-&nbsp;&nbsp;&nbsp;&nbsp;• 「どの公式が、どの原理の顔か」<br>
-を対応づけて覚えるのが最適です。<br><br>
-この一覧は<br>
-解析力学を一生使うための最小辞書<br>
-として作っています。<br><br>
-次にやるとしたら自然なのは：<br>
-&nbsp;&nbsp;&nbsp;&nbsp;• この一覧を使って 例題を1つ自力で構造解析<br>
-&nbsp;&nbsp;&nbsp;&nbsp;• あるいは<br>
-&nbsp;&nbsp;&nbsp;&nbsp;• 同じ一覧で 量子力学を読み替える<br><br>
-どちらに進みますか。
-</p>
 </div>
 
 </body>
