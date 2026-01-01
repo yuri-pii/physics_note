@@ -2,51 +2,80 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>解析力学まとめノート（本質中心・定義と単位付き）</title>
 
 <style>
 @page { size: A4; margin: 16mm; }
 body{
   font-family: "Noto Serif JP","Yu Mincho",serif;
-  background:#fff; color:#000;
+  background:#fff;
+  color:#000;
   line-height:1.6;
   font-size:11.5pt;
 }
-h1{font-size:18pt;border-bottom:2px solid #000;padding-bottom:4px;}
-h2{font-size:14pt;border-left:4px solid #000;padding-left:8px;margin-top:1.2em;}
-h3{font-size:12.5pt;border-bottom:1px solid #000;margin-top:1em;}
-.box{border:1px solid #000;padding:10px 12px;margin:14px 0;}
+h1{
+  font-size:18pt;
+  border-bottom:2px solid #000;
+  padding-bottom:4px;
+}
+h2{
+  font-size:14pt;
+  border-left:4px solid #000;
+  padding-left:8px;
+  margin-top:1.2em;
+}
+h3{
+  font-size:12.5pt;
+  border-bottom:1px solid #000;
+  margin-top:1em;
+}
+.box{
+  border:1px solid #000;
+  padding:10px 12px;
+  margin:14px 0;
+}
 .eq{
   border-left:3px solid #000;
   padding:6px 10px;
   margin:10px 0;
-  font-family: "Times New Roman",serif;
+  overflow-x:auto;
 }
 .def{
   font-size:10.5pt;
   margin-left:12px;
 }
-.mono{font-family: "Times New Roman",serif;}
-.small{font-size:10.5pt;}
-ul{margin-left:1.2em;}
+.small{
+  font-size:10.5pt;
+}
+ul{
+  margin-left:1.2em;
+}
+.katex{
+  font-size:1.0em;
+}
 </style>
-<!-- MathJax v3: TeX 数式をレンダリング -->
+
+<!-- KaTeX -->
+<link rel="stylesheet"
+ href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+<script defer
+ src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+<script defer
+ src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+
 <script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [['\\(', '\\)'], ['$', '$']],
-      displayMath: [['\\[', '\\]'], ['$$', '$$']],
-      processEscapes: true
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-  };
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "\\[", right: "\\]", display: true},
+      {left: "\\(", right: "\\)", display: false}
+    ],
+    throwOnError: false,
+    strict: "ignore"
+  });
+});
 </script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-  
-
-
 </head>
 
 <body>
@@ -67,30 +96,34 @@ ul{margin-left:1.2em;}
 <h3>一般化座標と時間</h3>
 <ul>
 <li><b>時間</b>： \( t \)　[単位：s]</li>
-<li><b>一般化座標</b>： \( q_i(t) \)（\(i=1,\dots,n\)）[単位：系に依存（例：m, rad）]</li>
-<li><b>一般化速度</b>： \( \dot q_i = \dfrac{dq_i}{dt} \) [単位：\(q_i\)/s]</li>
+<li><b>一般化座標</b>： \( q_i(t) \)（\( i=1,\dots,n \)）[単位：系に依存]</li>
+<li><b>一般化速度</b>：
+  \( \dot{q}_i = \dfrac{dq_i}{dt} \)
+  [単位：\( q_i \)/s]
+</li>
 </ul>
 
 <h3>ラグランジアン</h3>
 <div class="eq">
-\( L(q,\dot q,t) \)
+\[
+L(q,\dot{q},t)
+\]
 </div>
 <div class="def">
-・定義：系の局所的な運動の評価関数  
-・単位：エネルギー [J]  
+・定義：系の局所的な運動の評価関数<br>
+・単位：エネルギー [J]
 </div>
 
 <h3>作用（Action）</h3>
 <div class="eq">
 \[
-S[q] = \int_{t_1}^{t_2} L(q,\dot q,t)\,dt
+S[q] = \int_{t_1}^{t_2} L(q,\dot{q},t)\,dt
 \]
 </div>
 <div class="def">
-・定義：経路 \(q(t)\) 全体の評価  
-・単位： [J·s]  
+・定義：経路 \( q(t) \) 全体の評価<br>
+・単位：[J·s]
 </div>
-
 </div>
 
 <div class="box">
@@ -99,12 +132,11 @@ S[q] = \int_{t_1}^{t_2} L(q,\dot q,t)\,dt
 <h3>時間微分</h3>
 <div class="eq">
 \[
-\dot q_i(t) = \frac{dq_i(t)}{dt}
+\dot{q}_i(t) = \frac{dq_i(t)}{dt}
 \]
 </div>
 <div class="def">
-・意味：同一の経路上で時間方向の変化を見る  
-・単位：\(q_i\)/s  
+・意味：同一経路上での時間方向の変化
 </div>
 
 <h3>変分</h3>
@@ -113,62 +145,56 @@ S[q] = \int_{t_1}^{t_2} L(q,\dot q,t)\,dt
 q(t) \rightarrow q(t) + \varepsilon\,\eta(t)
 \]
 \[
-\delta q(t) := 
-\left.\frac{d}{d\varepsilon}[q(t)+\varepsilon\eta(t)]\right|_{\varepsilon=0}
+\delta q(t)
+=
+\left.
+\frac{d}{d\varepsilon}
+\bigl[q(t)+\varepsilon\eta(t)\bigr]
+\right|_{\varepsilon=0}
 = \eta(t)
 \]
 </div>
 <div class="def">
-・\( \varepsilon \)：無次元微小パラメータ  
-・\( \eta(t) \)：任意の試行関数（端点で0）  
-・\( \delta q \) の単位：\(q\) と同じ  
+・\( \varepsilon \)：無次元微小量<br>
+・\( \eta(t) \)：端点で0となる任意関数
 </div>
 
 <h3>交換則</h3>
 <div class="eq">
 \[
-\delta \dot q = \frac{d}{dt}(\delta q)
+\delta \dot{q} = \frac{d}{dt}(\delta q)
 \]
 </div>
-<div class="def">
-・成立条件：経路が十分滑らか（可微）  
-</div>
-
 </div>
 
 <div class="box">
 <h2>3. 停留条件</h2>
-
-<h3>定義</h3>
 <div class="eq">
 \[
 \delta S = 0
 \]
 </div>
 <div class="def">
-・意味：任意の変分方向 \( \eta(t) \) に対して一次変化が消える  
-・「最小・最大・鞍点」をすべて含む  
+・任意の変分に対し一次変化が消える
 </div>
-
 </div>
 
 <div class="box">
 <h2>4. オイラー＝ラグランジュ方程式</h2>
-
 <div class="eq">
 \[
-\frac{d}{dt}\left(\frac{\partial L}{\partial \dot q_i}\right)
+\frac{d}{dt}
+\left(
+\frac{\partial L}{\partial \dot{q}_i}
+\right)
 -
 \frac{\partial L}{\partial q_i}
 = 0
 \]
 </div>
-
 <div class="def">
-・\( \partial L/\partial q_i \)：力に対応 [N]  
-・\( \partial L/\partial \dot q_i \)：共役運動量 [kg·m/s]  
+・\( \partial L/\partial \dot{q}_i \)：共役運動量
 </div>
-
 </div>
 
 <div class="box">
@@ -177,265 +203,82 @@ q(t) \rightarrow q(t) + \varepsilon\,\eta(t)
 <h3>共役運動量</h3>
 <div class="eq">
 \[
-p_i := \frac{\partial L}{\partial \dot q_i}
+p_i = \frac{\partial L}{\partial \dot{q}_i}
 \]
-</div>
-<div class="def">
-・単位：運動量 [kg·m/s]（角変数なら [kg·m²/s]）  
 </div>
 
 <h3>エネルギー</h3>
 <div class="eq">
 \[
-E = \sum_i \dot q_i\,p_i - L
+E = \sum_i \dot{q}_i p_i - L
 \]
 </div>
-<div class="def">
-・単位：[J]  
-・時間並進対称性があると保存  
-</div>
-
 </div>
 
 <div class="box">
 <h2>6. 拘束と未定乗数</h2>
-
 <div class="eq">
 \[
 f(q,t) = 0
 \]
 </div>
-<div class="def">
-・幾何学的拘束（ホロノミック）  
-</div>
-
 <div class="eq">
 \[
-\tilde L = L + \lambda(t)\,f(q,t)
+\tilde{L} = L + \lambda(t) f(q,t)
 \]
 </div>
-<div class="def">
-・\( \lambda(t) \)：未定乗数（拘束力に対応）  
-・単位：力に応じて決まる  
-</div>
-
 </div>
 
 <div class="box">
-<h2>7. 散逸（摩擦）</h2>
-
+<h2>7. 散逸</h2>
 <div class="eq">
 \[
-R = \frac12 \sum_i \gamma_i \dot q_i^2
+R = \frac{1}{2} \sum_i \gamma_i \dot{q}_i^2
 \]
 </div>
-<div class="def">
-・レイリー散逸関数  
-・単位：[J/s]  
-</div>
-
 <div class="eq">
 \[
-\frac{d}{dt}\left(\frac{\partial L}{\partial \dot q_i}\right)
+\frac{d}{dt}
+\left(
+\frac{\partial L}{\partial \dot{q}_i}
+\right)
 -
 \frac{\partial L}{\partial q_i}
 =
--\frac{\partial R}{\partial \dot q_i}
+-
+\frac{\partial R}{\partial \dot{q}_i}
 \]
 </div>
-
 </div>
 
 <div class="box">
 <h2>8. ハミルトン形式</h2>
-
 <div class="eq">
 \[
-H(q,p,t) = \sum_i p_i\dot q_i - L
+H(q,p,t) = \sum_i p_i \dot{q}_i - L
 \]
 </div>
-<div class="def">
-・単位：[J]  
-・時間発展の生成子  
-</div>
-
 <div class="eq">
 \[
-\dot q_i = \frac{\partial H}{\partial p_i},
+\dot{q}_i = \frac{\partial H}{\partial p_i},
 \qquad
-\dot p_i = -\frac{\partial H}{\partial q_i}
+\dot{p}_i = -\frac{\partial H}{\partial q_i}
 \]
 </div>
-
 </div>
 
 <div class="box">
-<h2>9. 量子論との接続（参照）</h2>
-
+<h2>9. 量子論との接続</h2>
 <div class="eq">
 \[
-\text{重み} \sim e^{\,iS/\hbar}
+\text{重み} \sim e^{iS/\hbar}
 \]
 </div>
-<div class="def">
-・\( \hbar \)：プランク定数 [J·s]  
-・停留条件 \( \delta S=0 \) が古典極限で支配  
-</div>
-
 </div>
 
 <p class="small">
 このノートは「定義 → 構造 → 必然性」を忘れないための参照用まとめである。
 </p>
-<div class="box">
-<h2>付録A：次元チェック表（参照用）</h2>
 
-<p>
-この表は、解析力学で頻出する量について
-<strong>定義・次元・SI単位</strong>を一望できるようにまとめたものである。
-計算前・計算後の整合性確認に用いる。
-</p>
-
-<table border="1" cellspacing="0" cellpadding="6" style="border-collapse:collapse;font-size:10.5pt;">
-<thead>
-<tr>
-<th>量</th>
-<th>記号</th>
-<th>定義 / 意味</th>
-<th>次元</th>
-<th>SI単位</th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td>時間</td>
-<td><i>t</i></td>
-<td>独立変数</td>
-<td>[T]</td>
-<td>s</td>
-</tr>
-
-<tr>
-<td>一般化座標</td>
-<td><i>q</i></td>
-<td>配置空間の座標</td>
-<td>系に依存</td>
-<td>m, rad など</td>
-</tr>
-
-<tr>
-<td>一般化速度</td>
-<td><i>q̇</i></td>
-<td>dq/dt</td>
-<td>[q]/[T]</td>
-<td>m/s, rad/s</td>
-</tr>
-
-<tr>
-<td>質量</td>
-<td><i>m</i></td>
-<td>慣性の尺度</td>
-<td>[M]</td>
-<td>kg</td>
-</tr>
-
-<tr>
-<td>運動エネルギー</td>
-<td><i>T</i></td>
-<td>速度に依存</td>
-<td>[M L² T⁻²]</td>
-<td>J</td>
-</tr>
-
-<tr>
-<td>位置エネルギー</td>
-<td><i>V</i></td>
-<td>位置に依存</td>
-<td>[M L² T⁻²]</td>
-<td>J</td>
-</tr>
-
-<tr>
-<td>ラグランジアン</td>
-<td><i>L</i></td>
-<td>L = T − V</td>
-<td>[M L² T⁻²]</td>
-<td>J</td>
-</tr>
-
-<tr>
-<td>作用</td>
-<td><i>S</i></td>
-<td>∫ L dt</td>
-<td>[M L² T⁻¹]</td>
-<td>J·s</td>
-</tr>
-
-<tr>
-<td>共役運動量</td>
-<td><i>p</i></td>
-<td>∂L/∂q̇</td>
-<td>[M L T⁻¹]</td>
-<td>kg·m/s</td>
-</tr>
-
-<tr>
-<td>力</td>
-<td><i>F</i></td>
-<td>−∂V/∂q</td>
-<td>[M L T⁻²]</td>
-<td>N</td>
-</tr>
-
-<tr>
-<td>エネルギー</td>
-<td><i>E</i></td>
-<td>q̇p − L</td>
-<td>[M L² T⁻²]</td>
-<td>J</td>
-</tr>
-
-<tr>
-<td>ハミルトニアン</td>
-<td><i>H</i></td>
-<td>時間発展の生成子</td>
-<td>[M L² T⁻²]</td>
-<td>J</td>
-</tr>
-
-<tr>
-<td>散逸関数</td>
-<td><i>R</i></td>
-<td>速度比例摩擦</td>
-<td>[M L² T⁻³]</td>
-<td>J/s</td>
-</tr>
-
-<tr>
-<td>未定乗数</td>
-<td><i>λ</i></td>
-<td>拘束力に対応</td>
-<td>拘束に依存</td>
-<td>例：N</td>
-</tr>
-
-<tr>
-<td>プランク定数</td>
-<td><i>ħ</i></td>
-<td>量子作用量</td>
-<td>[M L² T⁻¹]</td>
-<td>J·s</td>
-</tr>
-</tbody>
-</table>
-
-<p class="small">
-使い方：
-(1) 式の各項の次元が一致するか確認する  
-(2) 新しい項（摩擦・補正項）を入れてよいか判断する  
-(3) 有効理論か基礎理論かを見極める
-</p>
-</div>
 </body>
 </html>
