@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>解析力学：最小セット（数学公式／物理原理）まとめノート</title>
+
+<style>
+@page { size: A4; margin: 16mm; }
+body{
+  font-family:"Noto Serif JP","Yu Mincho",serif;
+  background:#fff; color:#000;
+  line-height:1.65;
+  font-size:11.5pt;
+}
+h1{font-size:18pt;border-bottom:2px solid #000;padding-bottom:4px;margin-bottom:0.6em;}
+h2{font-size:14pt;border-left:4px solid #000;padding-left:8px;margin-top:1.2em;}
+h3{font-size:12.5pt;border-bottom:1px solid #000;margin-top:1em;}
+.box{border:1px solid #000;padding:10px 12px;margin:14px 0;}
+.eq{
+  border-left:3px solid #000;
+  padding:6px 10px;
+  margin:10px 0;
+  overflow-x:auto;
+}
+.def{font-size:10.5pt;margin-left:12px;}
+.small{font-size:10.5pt;}
+ul{margin-left:1.2em;}
+.katex{font-size:1.0em;}
+hr{border:none;border-top:1px solid #000;margin:14px 0;}
+table{border-collapse:collapse;font-size:10.5pt;width:100%;}
+th,td{border:1px solid #000;padding:6px;vertical-align:top;}
+</style>
+
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "\\[", right: "\\]", display: true},
+      {left: "\\(", right: "\\)", display: false}
+    ],
+    throwOnError: false,
+    strict: "ignore"
+  });
+});
+</script>
+</head>
+
+<body>
+
+<h1>解析力学：最小セット（数学公式／物理原理）まとめノート</h1>
+
+<div class="box">
+<p>
+とても良い段階に来ています。<br>
+ここでは 「解析力学で本当に使うものだけ」 を、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• ✅ 数学公式（道具）<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• ✅ 物理の公理・原理（意味）<br>
+に分けて、<br>
+一覧＋覚え方メモ＋物理量の説明 付きで整理します。<br><br>
+目的は<br>
+暗記ではなく「思い出せる最小セット」を作ること<br>
+です。
+</p>
+</div>
+
+<div class="box">
+<h2>Ⅰ. 解析力学で使う数学公式（最小セット）</h2>
+
+<h3>1. 多変数関数の一次テイラー展開</h3>
+<div class="eq">
+\[
+f(x+\varepsilon a,\,y+\varepsilon b)
+=
+f(x,y)
++
+\varepsilon\left(
+\frac{\partial f}{\partial x}a
++
+\frac{\partial f}{\partial y}b
+\right)
++O(\varepsilon^2)
+\]
+</div>
+<p>
+使う場面<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• 作用の変分<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• 「一次の変化だけを見る」ため
+</p>
+<p>
+覚え方メモ<br><br>
+変分＝一次テイラー展開<br><br>
+これだけで9割の変分計算が始まる。
+</p>
+
+<hr>
+
+<h3>2. 変分の定義（方向微分）</h3>
+<div class="eq">
+\[
+\delta S
+=
+\left.\frac{d}{d\varepsilon}S[q+\varepsilon\eta]\right|_{\varepsilon=0}
+\]
+</div>
+<p>
+使う場面<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• 「δとは何か」を曖昧にしないため
+</p>
+<p>
+覚え方メモ<br><br>
+δは「関数空間での微分」<br>
+時間微分とは別物。
+</p>
+
+<hr>
+
+<h3>3. 微分の線形性</h3>
+<div class="eq">
+\[
+\delta \dot q = \frac{d}{dt}(\delta q)
+\]
+</div>
+<p>
+使う場面<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• \dot q を含むラグランジアンの変分
+</p>
+<p>
+覚え方メモ<br><br>
+δと d/dt は交換できる<br>
+（十分な滑らかさが前提）
+</p>
+
+<hr>
+
+<h3>4. 部分積分</h3>
+<div class="eq">
+\[
+\int_{t_1}^{t_2} A\,\dot B\,dt
+=
+\left[A B\right]_{t_1}^{t_2}
+-
+\int_{t_1}^{t_2} \dot A\,B\,dt
+\]
+</div>
+<p>
+使う場面<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• 変分計算の核心<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• \dot\eta を消す
+</p>
+<p>
+覚え方メモ<br><br>
+E–L 方程式は<br>
+部分積分1回で生まれる
+</p>
+
+<hr>
+
+<h3>5. 変分法の基本補題</h3>
+<div class="eq">
+\[
+\int_{t_1}^{t_2} f(t)\,\eta(t)\,dt = 0
+\quad(\forall\,\eta,\ \eta(t_1)=\eta(t_2)=0)
+\Rightarrow
+f(t)=0
+\]
+</div>
+<p>
+使う場面<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• 積分条件 → 局所方程式への変換
+</p>
+<p>
+覚え方メモ<br><br>
+「任意」なら「中身ゼロ」
+</p>
+
+<hr>
+
+<h3>6. ルジャンドル変換（エネルギー）</h3>
+<div class="eq">
+\[
+H(q,p,t)=\sum_i \dot q_i p_i - L
+\]
+</div>
+<p>
+使う場面<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• エネルギー定義<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• ハミルトニアンへの移行
+</p>
+<p>
+覚え方メモ<br><br>
+速度 → 運動量への視点変更
+</p>
+
+</div>
+
+<div class="box">
+<h2>Ⅱ. 解析力学の物理的公理・原理（意味付き）</h2>
+
+<h3>1. 作用の停留原理（最重要）</h3>
+<div class="eq">
+\[
+\delta S = 0,
+\qquad
+S[q]=\int_{t_1}^{t_2} L(q,\dot q,t)\,dt
+\]
+</div>
+<p>
+物理的意味<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• 自然は「経路全体」を一度に比較する<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• 一次の違いが消える経路が実現する
+</p>
+<p>
+覚え方メモ<br><br>
+自然は最適化しない<br>
+区別できない経路が残る
+</p>
+
+<hr>
+
+<h3>2. ラグランジアンの定義</h3>
+<div class="eq">
+\[
+L = T - V
+\]
+</div>
+<p>
+物理量の説明<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• T：運動エネルギー（速度の情報）<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• V：位置エネルギー（配置の情報）
+</p>
+<p>
+単位<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• L：エネルギー [J]
+</p>
+<p>
+覚え方メモ<br><br>
+L は「重要性の宣言」<br>
+何を保存し、何を無視するか。
+</p>
+
+<hr>
+
+<h3>3. オイラー＝ラグランジュ方程式</h3>
+<div class="eq">
+\[
+\frac{d}{dt}\left(\frac{\partial L}{\partial \dot q_i}\right)
+-
+\frac{\partial L}{\partial q_i}
+=0
+\]
+</div>
+<p>
+物理的意味<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• 作用の停留条件の局所表現<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• 力学の運動方程式
+</p>
+<p>
+覚え方メモ<br><br>
+E–L は原理ではない<br>
+公理の翻訳結果
+</p>
+
+<hr>
+
+<h3>4. 共役運動量の定義</h3>
+<div class="eq">
+\[
+p_i := \frac{\partial L}{\partial \dot q_i}
+\]
+</div>
+<p>
+物理量の説明<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• 座標 q_i に対応する運動量<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• 保存則の主役
+</p>
+<p>
+単位<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• 通常の運動量：[kg·m/s]
+</p>
+<p>
+覚え方メモ<br><br>
+「速度の重要度」を測る量
+</p>
+
+<hr>
+
+<h3>5. 循環座標の原理</h3>
+<div class="eq">
+\[
+\frac{\partial L}{\partial q_i}=0
+\Rightarrow
+\frac{dp_i}{dt}=0
+\]
+</div>
+<p>
+物理的意味<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• その方向に物理的区別がない<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• → 保存量が生まれる
+</p>
+<p>
+覚え方メモ<br><br>
+対称性＝依存しない変数
+</p>
+
+<hr>
+
+<h3>6. Noetherの原理（超要約）</h3>
+<div class="eq">
+\[
+\text{連続対称性 ↔ 保存量}
+\]
+</div>
+
+<p>
+具体例
+</p>
+
+<table>
+<thead>
+<tr>
+<th>対称性</th>
+<th>保存量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>時間並進</td>
+<td>エネルギー</td>
+</tr>
+<tr>
+<td>空間並進</td>
+<td>運動量</td>
+</tr>
+<tr>
+<td>回転</td>
+<td>角運動量</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+覚え方メモ<br><br>
+対称性は記憶を残す
+</p>
+
+<hr>
+
+<h3>7. エネルギー保存</h3>
+<div class="eq">
+\[
+E=\sum_i \dot q_i p_i - L,
+\qquad
+\frac{\partial L}{\partial t}=0
+\Rightarrow
+\frac{dE}{dt}=0
+\]
+</div>
+<p>
+物理量の説明<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• 時間方向の Noether 量
+</p>
+<p>
+単位<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• エネルギー [J]
+</p>
+<p>
+覚え方メモ<br><br>
+時間に依らない → 時間方向の保存
+</p>
+
+<hr>
+
+<h3>8. 有効ポテンシャル</h3>
+<div class="eq">
+\[
+V_{\mathrm{eff}}(r)=V(r)+\frac{l^2}{2mr^2}
+\]
+</div>
+<p>
+物理的意味<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• 消した自由度の「記憶」<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• 制約を守るためのエネルギー代
+</p>
+<p>
+覚え方メモ<br><br>
+自由度削減の痕跡
+</p>
+
+</div>
+
+<div class="box">
+<h2>Ⅲ. 最短で覚える「構造暗記ルート」</h2>
+
+<div class="eq">
+\[
+\text{作用 }S\text{ を定義}
+\]
+\[
+\downarrow
+\]
+\[
+\delta S = 0\ \text{（公理）}
+\]
+\[
+\downarrow
+\]
+\[
+\text{E–L 方程式（数学）}
+\]
+\[
+\downarrow
+\]
+\[
+\text{対称性を見る}
+\]
+\[
+\downarrow
+\]
+\[
+\text{保存量}
+\]
+\[
+\downarrow
+\]
+\[
+\text{自由度削減}
+\]
+\[
+\downarrow
+\]
+\[
+\text{有効ポテンシャル}
+\]
+</div>
+
+</div>
+
+<div class="box">
+<h2>最後に（あなた向けの一言）</h2>
+<p>
+あなたの理解段階では、<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• 公式を増やす<br>
+よりも<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• 「どの公式が、どの原理の顔か」<br>
+を対応づけて覚えるのが最適です。<br><br>
+この一覧は<br>
+解析力学を一生使うための最小辞書<br>
+として作っています。<br><br>
+次にやるとしたら自然なのは：<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• この一覧を使って 例題を1つ自力で構造解析<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• あるいは<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• 同じ一覧で 量子力学を読み替える<br><br>
+どちらに進みますか。
+</p>
+</div>
+
+</body>
+</html>
