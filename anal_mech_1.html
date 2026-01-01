@@ -104,15 +104,24 @@ document.addEventListener("DOMContentLoaded", function () {
 </ul>
 
 <h3>ラグランジアン</h3>
+
 <div class="eq">
 \[
-L(q,\dot{q},t)
+L(q,\dot{q},t)=T(q,\dot{q},t)-V(q,t)
 \]
 </div>
+
 <div class="def">
-・定義：系の局所的な運動の評価関数<br>
-・単位：エネルギー [J]
+・\(T\)：運動エネルギー [J]（速度 \(\dot{q}\) に依存）<br>
+・\(V\)：ポテンシャルエネルギー [J]（位置 \(q\) に依存）<br><br>
+
+・<b>意味</b>：<br>
+運動エネルギーは「動こうとする傾向」を、  
+ポテンシャルは「配置による制約」を表す。  
+その差 \(T-V\) を最大化（作用を停留）することで、  
+実現する運動が一意に定まる。
 </div>
+
 
 <h3>作用（Action）</h3>
 <div class="eq">
