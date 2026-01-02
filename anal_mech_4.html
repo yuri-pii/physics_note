@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ⅱ’. 解析力学におけるルジャンドル変換（拡張版）</title>
+
+<style>
+@page { size: A4; margin: 16mm; }
+body{
+  font-family:"Noto Serif JP","Yu Mincho",serif;
+  background:#fff; color:#000;
+  line-height:1.65;
+  font-size:11.5pt;
+}
+h1{font-size:18pt;border-bottom:2px solid #000;padding-bottom:4px;margin-bottom:0.6em;}
+h2{font-size:14pt;border-left:4px solid #000;padding-left:8px;margin-top:1.2em;}
+h3{font-size:12.5pt;border-bottom:1px solid #000;margin-top:1em;}
+.box{border:1px solid #000;padding:10px 12px;margin:14px 0;}
+.eq{
+  border-left:3px solid #000;
+  padding:6px 10px;
+  margin:10px 0;
+  overflow-x:auto;
+}
+.def{font-size:10.5pt;margin-left:12px;}
+.small{font-size:10.5pt;}
+ul{margin-left:1.2em;}
+.katex{font-size:1.0em;}
+hr{border:none;border-top:1px solid #000;margin:14px 0;}
+</style>
+
+<!-- KaTeX -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "\\[", right: "\\]", display: true},
+      {left: "\\(", right: "\\)", display: false}
+    ],
+    throwOnError: false,
+    strict: "ignore"
+  });
+});
+</script>
+</head>
+
+<body>
+
+<h1>Ⅱ’. 解析力学におけるルジャンドル変換（拡張版）</h1>
+
+<div class="box">
+<h2>6’. ルジャンドル変換（視点の交換）</h2>
+
+<h3>定義（再掲）</h3>
+<div class="eq">
+\[
+p_i \;\equiv\; \frac{\partial L}{\partial \dot q_i}
+\]
+\[
+H(q,p,t)
+\;\equiv\;
+\sum_i \dot q_i\,p_i \;-\; L(q,\dot q,t)
+\]
+</div>
+
+<p>
+ただし右辺の \(\dot q_i\) は<br>
+\(p_i=\partial L/\partial\dot q_i\) を 解いて代入したもの。
+</p>
+
+<hr>
+
+<h3>何をしている変換か（数学的意味）</h3>
+
+<p>
+ルジャンドル変換とは：
+</p>
+<p>
+「変数を捨てる」のではなく<br>
+「傾き（勾配）で言い換える」変換<br>
+である。
+</p>
+
+<ul>
+  <li>元の記述：<br>
+    \(L = L(q,\dot q,t)\)<br>
+    → 「速度 \(\dot q\) を独立変数にした表現」
+  </li>
+  <li>変換後の記述：<br>
+    \(H = H(q,p,t)\)<br>
+    → 「速度の重要度 \(p\) を独立変数にした表現」
+  </li>
+</ul>
+
+<hr>
+
+<h3>なぜこの変換が自然か（解析力学的動機）</h3>
+
+<p>
+ラグランジアン形式では：<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• \(\dot q\) は「どれくらい動いているか」<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• しかし 保存や対称性は<br>
+\(\dot q\) ではなく 共役運動量 \(p\) に現れる
+</p>
+
+<p>
+そこで：
+</p>
+
+<p>
+「運動の速さ」ではなく<br>
+「その速さがどれだけ重要か」<br>
+を基本変数にしたい
+</p>
+
+<p>
+→ それがルジャンドル変換。
+</p>
+
+<hr>
+
+<h3>物理量の説明（重要）</h3>
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;• \(p_i = \partial L/\partial \dot q_i\)<br>
+：その座標方向の「速度の重み」<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• \(\dot q_i p_i\)<br>
+：エネルギーの流入率（仕事率の一般化）<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• \(H\)<br>
+：時間発展を生成する量<br>
+（※ エネルギーと一致するのは特別な場合）
+</p>
+
+<hr>
+
+<h3>単位</h3>
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;• \(p_i\)：<br>
+\(q_i\) が長さなら<br>
+\([p_i] = \mathrm{kg\,m/s}\)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• \(H\)：<br>
+エネルギー [J]
+</p>
+
+<hr>
+
+<h3>重要な注意（よくある誤解）</h3>
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;• ルジャンドル変換 ≠ 単なる変数変換<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• 「\(\dot q \leftrightarrow p\) を入れ替えただけ」ではない
+</p>
+
+<p>
+本質は：
+</p>
+
+<p>
+関数の情報を<br>
+“点の値”から<br>
+“傾きの情報”に移す<br>
+という操作。
+</p>
+
+<hr>
+
+<h3>覚え方メモ（構造暗記）</h3>
+<p>
+L：どう動くか（速度中心）<br>
+H：どう変わるか（生成子中心）
+</p>
+
+<p>
+あるいは：
+</p>
+
+<p>
+L は経路を見る<br>
+H は時間発展を見る
+</p>
+
+<hr>
+
+<h3>解析力学全体での位置づけ</h3>
+
+<div class="eq">
+\[
+\text{作用 }S
+\]
+\[
+\downarrow
+\]
+\[
+\text{ラグランジアン }L(q, \dot q)
+\]
+\[
+\downarrow\ (\text{ルジャンドル変換})
+\]
+\[
+\text{ハミルトニアン }H(q, p)
+\]
+\[
+\downarrow
+\]
+\[
+\text{正準方程式・生成子・量子化}
+\]
+</div>
+
+<p>
+つまり：
+</p>
+
+<p>
+ルジャンドル変換は<br>
+解析力学 → ハミルトン力学 → 量子力学<br>
+への“扉”
+</p>
+
+<hr>
+
+<h3>有効ポテンシャルとの関係（理解の接続）</h3>
+
+<p>
+中心力問題でやったことは実質：<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• 角度自由度を<br>
+\(\dot\theta \to p_\theta=l\)<br>
+によって ルジャンドル変換的に処理<br>
+&nbsp;&nbsp;&nbsp;&nbsp;• その結果が<br>
+\(\dfrac{l^2}{2mr^2}\)
+</p>
+
+<p>
+👉<br>
+有効ポテンシャルは<br>
+「部分的ルジャンドル変換の痕跡」
+</p>
+
+<hr>
+
+<h3>一文まとめ（ノート用）</h3>
+
+<p>
+ルジャンドル変換とは、<br>
+速度による記述を<br>
+共役運動量による記述に切り替え、<br>
+保存量と時間発展を<br>
+自然に扱うための構造的変換である。
+</p>
+
+</div>
+
+</body>
+</html>
